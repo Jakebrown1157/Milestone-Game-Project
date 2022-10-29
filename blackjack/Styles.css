@@ -15,6 +15,21 @@ body{
     border: 1px solid black;
     border-radius: .25em;
     padding: 0.5em;
+    box-shadow: -.5em 0 1em grey;
+    transition: 0.4s ease-out;
+    position: relative;
+    left: 0px;
+}
+
+.card:hover {
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
+}
+
+.card:hover ~ .card {
+  position: relative;
+  left: 10px;
+  transition: 0.4s ease-out;
 }
 
 [data-suit="diamonds"],[data-suit="hearts"].card{
@@ -22,4 +37,16 @@ body{
 }
 [data-suit="spades"],[data-suit="clubs"].card{
     color:black;
+}
+#deck{
+    display: inline;
+
+}
+.container{
+    position: absolute;
+    height: 300px;
+    width: 600px;
+    top: 60px;
+    left: calc(50% - 150px);
+    display: flex;
 }
