@@ -1,56 +1,60 @@
-var suits = ['spades','hearts','diamonds','clubs']
-var cardValues = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
-let deck = ''
+let suits = ['spades','hearts','diamonds','clubs']
+let rank = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
+let deck = []
 
 //create a deck of 52 card objects each contained in an array that have key and value pairs
 function createDeck(){
-    deck = new Array()
     for(let i = 0; i < suits.length; i++){
-        for(let u = 0; u < cardValues.length; u++){
-            let weight = parseInt(cardValues[u]);
-            if (cardValues[u] == "T" || cardValues[u] == "J" || cardValues[u] == "Q" || cardValues[u] == "K"){
+        for(let u = 0; u < rank.length; u++){
+            let cardValue = rank[u]
+
+            let weight = parseInt(cardValue);
+            if (cardValue === "T" || cardValue === "J" || cardValue === "Q" || cardValue === "K"){
                 weight = 10;
-            }else if (cardValues[u] == "A"){
+            }else if (cardValue == "A"){
                 weight = 11;
             }
             
             let card = document.createElement('div')
             card.classList.add('card')
-            card.dataset.suit = (suits[i])
-            card.dataset.value = (cardValues[u])
+            var ID1 = card.dataset.suit = (suits[i])
+            var ID2 = card.dataset.value = (cardValue)
             card.dataset.weight = (weight)
             
-            console.log(card)
-            let blankCard = document.querySelectorAll('.card')
-            blankCard.forEach(addCardElements)
-    
-            function addCardElements(){
-            let cardSuit = document.createElement('h2')
-                card.append(cardSuit)
-            if(card.dataset.suit == 'spades'){
-                    let spades = 
-                    spades.textContent = '&#9824;'
-                    card.append(spades)
-                } else if (card.dataset.suit == 'hearts'){
-                    let hearts = document.createElement('h2')
-                    hearts.textContent = '&hearts;'
-                    card.append(hearts)
-                } else if (card.dataset.suit == 'diamonds'){
-                    let diamonds = document.createElement('h2')
-                    diamonds.textContent = '&#9670;'
-                    card.append(diamonds)
-                } else {
-                    let clubs = document.createElement('h2')
-                    clubs.textContent = '&#9827;'
-                    card.append(clubs)
-                }
-            
-        }}
-    }
-    return deck
-}
-   
+            addCardElements(ID1)
 
+            function addCardElements(ID1){
+            let text = ''
+            let cardSuit = document.createElement('h2')
+            cardSuit.classList.add('cardValue')
+            cardSuit.textContent = (cardValue)
+                card.append(cardSuit)
+                if(ID1 === 'spades'){
+                    text = '&#9824;'
+                } else if (ID1 === 'hearts'){
+                    text = '&hearts;'
+                } else if (ID1 === 'diamonds'){
+                    text = '&#9670;'
+                } else {
+                    text = '&#9827;'
+                }
+                if(ID1 === 'spades' || ID1 === 'hearts' || ID1 === 'diamonds' || ID1 === 'clubs'){
+                    let placeholder = document.createElement('h2')
+                    placeholder.classList.add('cardSymbol')
+                    placeholder.textContent = text
+                    card.append(placeholder)
+                }
+               
+                }
+                 deck.push(card)
+            }
+        }   
+        return deck
+    }
+
+
+createDeck()
+console.log(deck)
 
 
 //make it possible to shuffle the deck to get a random order of cards 
@@ -62,13 +66,7 @@ function shuffle(deck){
     deck[randomCard] = temporary;
    }
 }
-createDeck()
+
 shuffle(deck)
 
-console.log(deck)
 
-
-            // <div class="card" data-suit="hearts" data-value="2">
-            // <h2 class="cardValue">2</h2>
-            // <h2 class="cardSymbol">&hearts;</h2>
-            // </div>
