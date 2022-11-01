@@ -6,6 +6,28 @@ body{
     margin:auto;
 }
 
+.cardBack{
+    --width: 5em;
+    --height: calc(var(--width) * 1.4);
+    width: var(--width);
+    height: var(--height);
+    background-color: white;
+    border: 1px solid black;
+    border-radius: .25em;
+    padding: 0.5em;
+    box-shadow: -.5em 0 1em grey;
+    transition: 0.4s ease-out;
+    position: relative;
+    left: 100px;
+    top: 200px;
+    z-index: 1;
+}
+.dealersHand{
+    position: relative;
+    top: 200px;
+    z-index: 1;
+}
+
 .card{
     --width: 5em;
     --height: calc(var(--width) * 1.4);
@@ -49,4 +71,24 @@ body{
     top: 60px;
     left: calc(50% - 150px);
     display: flex;
+}
+.game-body{
+    width: 700px;
+    height: 700px;
+    background-color: green;
+    position: relative;
+    right: 200px;
+    bottom: 100px;
+    border: 5px solid black;
+    border-radius: 2em;
+    margin-top: 1em;
+    box-shadow: -.5em 0 1em grey;
+}
+.game-options{
+    position: relative;
+    top: 550px;
+}
+.btn{
+    width: 100px;
+    height: 50px;
 }

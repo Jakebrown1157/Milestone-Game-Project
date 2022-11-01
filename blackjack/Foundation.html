@@ -5,37 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css" type="text/css">
     <script src="Scripts.js" defer></script>
-    <link rel="stylesheet" href="Styles.css" type="text/css">
+</head>
 <body>
-    <header></header>
-    <!-- <div class="card" data-suit="hearts" data-value="2">
-        <h2 class="cardValue">2</h2>
-        <h2 class="cardSymbol">&hearts;</h2>
-    </div>  -->
+      
+
     <div class="game">
         <div class="game">
-               <h3>Blackjack</h3>
-       
-       <div class="game-body">
-              <div class="game-options">
-               <input type="button" id="btnStart" class="btn" value="start" onclick="startblackjack()">
-               <input type="button" class="btn" value="hit me" onclick="hitMe()">
-               <input type="button" class="btn" value="stay" onclick="stay()">
-               </div>
-       
-                   <div class="status" id="status"></div>
-       
-               <div id="deck" class="deck">
-                   <div id="deckcount">52</div>
-               </div>
-       
-               <div id="players" class="players">
-               </div>
-       
-               <div class="clear"></div>
+            <div class="dealersHand">
+                <h3>Dealers Hand</h3>
+            </div>
+                <div class="cardBack" data-suit="hearts" data-value="2">
+                    <h2 class="cardValue">Ace</h2>
+                    <h2 class="cardSymbol">&#9824;</h2>
+                </div> 
+            <div class="playersHand">
+                <h3>Your Hand</h3>
+                <div id="hand">
+
+                </div>
+            </div>
+            <div id="deck"></div>
+                <div class="game-body">
+                    <h1>Blackjack</h1>
+                    <div class="game-options">
+                        <input type="button" id="btnStart" class="btn" value="start" onclick="startBlackJack()">
+                        <input type="button" class="btn" value="hit me" onclick="hitMe()">
+                        <input type="button" class="btn" value="stay" onclick="stay()">
+                    </div>
+                </div>
+
        </div>
-   </div>
-    <footer></footer>
+    </div>
 </body>
 </html>
