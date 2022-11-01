@@ -2,21 +2,15 @@ let suits = ['spades','hearts','diamonds','clubs']
 let rank = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
 let deck = []
 let deckElement = document.getElementById('deck')
+let cardValue = ''
+let cardWeight = ''
+let card = ''
 
-startBlackJack()
-function startBlackJack(){
-    createDeck()
-    shuffle(deck)
-    createPlayers()
-}
-
-
-//create a deck of 52 card objects each contained in an array that have key and value pairs
+    //create a deck of 52 card objects each contained in an array that have key and value pairs
 function createDeck(){
     for(let i = 0; i < suits.length; i++){
         for(let u = 0; u < rank.length; u++){
-            let cardValue = rank[u]
-
+            cardValue = rank[u]
             let weight = parseInt(cardValue);
             if (cardValue === "T" || cardValue === "J" || cardValue === "Q" || cardValue === "K"){
                 weight = 10;
@@ -24,43 +18,42 @@ function createDeck(){
                 weight = 11;
             }
             
-            let card = document.createElement('div')
+            card = document.createElement('div')
             card.classList.add('card')
-            const ID1 = card.dataset.suit = (suits[i])
-            const ID2 = card.dataset.value = (cardValue)
-            card.dataset.weight = (weight)
-            
+            const ID1 = (suits[i])
             addCardElements(ID1)
 
             function addCardElements(ID1){
-            let text = ''
-            let cardSuit = document.createElement('h2')
-            cardSuit.classList.add('cardValue')
-            cardSuit.textContent = (cardValue)
-                card.append(cardSuit)
+            let ElementText = ''
+            let placeholder = ''
                 if(ID1 === 'spades'){
-                    text = '&#9824;'
+                    ElementText = '&#9824;'
                 } else if (ID1 === 'hearts'){
-                    text = '&hearts;'
+                    ElementText = '&hearts;'
                 } else if (ID1 === 'diamonds'){
-                    text = '&#9670;'
+                    ElementText = '&#9670;'
                 } else {
-                    text = '&#9827;'
+                    ElementText = '&#9827;'
                 }
-                let placeholder = document.createElement('h2')
-                placeholder.classList.add('cardSymbol')
-                placeholder.innerHTML = text
-                card.append(placeholder)
-               
-               
-                }
-                 deck.push(card)
+                let cardSuit = ElementText;
+                createH2(placeholder,'Weight',weight)
+                createH2(placeholder,'cardValue', cardValue)
+                createH2(placeholder,'cardSuit',cardSuit)
             }
-        }   
-        return deck
-    }
+            deck.push(card)
+        } 
+    }   
+    return deck
+    
+}
+function createH2(placeholder,name,text){
+    placeholder = document.createElement('h2')
+    placeholder.classList.add(name)
+    placeholder.innerHTML = text
+    card.append(placeholder)
+}
 
-//make it possible to shuffle the deck to get a random order of cards 
+    //make it possible to shuffle the deck to get a random order of cards 
 function shuffle(){
        for (let i = 0; i < deck.length; i++){
         let j = Math.floor(Math.random() * deck.length);
@@ -69,42 +62,33 @@ function shuffle(){
         deck[j] = temp
        }
        return deck
-    }
-   
+}
+function getValue(card){
+let data = document.querySelector('weight')
+
+} 
 
     //create the player and the dealer
+let dealerAceCount = 0;
+let yourAceCount = 0;
+let hiddenCard = 0;
+let canHIt = true;
 
-    function createPlayers(){
-        let player = new Array();
-        let playersHand = document.getElementById('Hand')
+let dealerSum = 0;
+let yourSum = 0;
 
-        for(let i = 0; i < deck.length; i++){
-            let randomCard = Math.floor(Math.random() * deck.length)
-            playersHand.append = randomCard
-        }
-        player.push(playersHand)
-        
+function startBlackJack(){
+    createDeck()
+    shuffle(deck)
+    getValue()
+    // createPlayers()
+
+    for(let i = 0; i < 5; i++){
+    hiddenCard = deck.pop();
+    dealerSum += getValue(hiddenCard)
+    console.log(hiddenCard)
     }
+    console.log(deck)
+}
 
-
-
-
-
-    function renderCard(card, player){
-        hand = document.getElementById('hand_' + player);
-        hand.appendChild(getCardUI(card));
-    }
-    function getCardUI(card){
-        math.floor(Math.random() * deck.length);
-        let hand = document.getElementById('deck')
-        hand.append(deck[i])
-    }
-    function trackPoints(){
-        console.log('everything works')
-    }
-    function hitMe(){
-
-    }
-    function stay(){
-
-    }
+startBlackJack()

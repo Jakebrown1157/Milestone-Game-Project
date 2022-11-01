@@ -54,11 +54,8 @@ body{
   transition: 0.4s ease-out;
 }
 
-[data-suit="diamonds"],[data-suit="hearts"].card{
-    color: red;
-}
-[data-suit="spades"],[data-suit="clubs"].card{
-    color:black;
+.weight{
+    display: none;
 }
 #deck{
     display: inline;
