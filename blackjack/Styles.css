@@ -39,7 +39,7 @@ body{
     height: 200px;
 }
 #results{
-    display: inline;
+    display: none;
 }
 #Weight{
     display: none;

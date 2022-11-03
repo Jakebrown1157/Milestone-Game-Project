@@ -43,8 +43,7 @@ function createDeck(){
             deck.push(card)
         } 
     }   
-    return deck
-    
+    return deck   
 }
     //make a refactor function for creating cards 
 function createH2(placeholder,name,text){
@@ -143,7 +142,7 @@ let playerSum = 0;
 function startBlackJack(){
     createDeck()
     shuffle(deck)
-    
+    //Dealers hand
     for(let i = 0; i < 1; i++){
     let  Hidden = document.getElementById('Hidden')
     hiddenCard = deck.pop();
@@ -159,6 +158,7 @@ function startBlackJack(){
              dealersHand.append(newCard)
         }
     }
+    //Players hand
     for(let i = 0; i < 2; i++){
         let playersHand = document.getElementById('players-Hand')
         newCard = deck.pop()
