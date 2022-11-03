@@ -3,46 +3,85 @@ body{
     width: 300px;
     height: 200px;
     text-align: center;
-    margin:auto;
+    margin: auto;
+    
 }
-
-.cardBack{
-    --width: 5em;
-    --height: calc(var(--width) * 1.4);
-    width: var(--width);
-    height: var(--height);
-    background-color: white;
-    border: 1px solid black;
-    border-radius: .25em;
-    padding: 0.5em;
-    box-shadow: -.5em 0 1em grey;
-    transition: 0.4s ease-out;
+.dealerTitle{
     position: relative;
-    left: 100px;
-    top: 200px;
+    top:250px;
     z-index: 1;
 }
 .dealersHand{
     position: relative;
     top: 200px;
+    right: 150px;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 200px;
 }
-
-.card{
+.playersTitle{
+    position: relative;
+    top:475px;
+    z-index: 1; 
+}
+.playersHand{
+    position: relative;
+    top: 280px;
+    right: 150px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 200px;
+}
+#Weight{
+    display: none;
+}
+.cardBack{
     --width: 5em;
     --height: calc(var(--width) * 1.4);
     width: var(--width);
     height: var(--height);
+
     background-color: white;
     border: 1px solid black;
     border-radius: .25em;
     padding: 0.5em;
     box-shadow: -.5em 0 1em grey;
     transition: 0.4s ease-out;
-    position: relative;
-    left: 0px;
-}
 
+    position: relative;
+    z-index: 1;
+    margin: 0.2em;
+    display: inline;
+    float: left;
+}
+.card{
+    --width: 5em;
+    --height: calc(var(--width) * 1.4);
+    width: var(--width);
+    height: var(--height);
+
+    background-color: white;
+    border: 1px solid black;
+    border-radius: .25em;
+    padding: 0.5em;
+    box-shadow: -.5em 0 1em grey;
+    transition: 0.4s ease-out;
+
+    position: relative;
+    z-index: 1;
+    margin: 0.2em;
+    display: inline;
+    float: left;
+}
+html{
+    height: 10px;
+}
 .card:hover {
   transform: translateY(-20px);
   transition: 0.4s ease-out;
@@ -50,40 +89,30 @@ body{
 
 .card:hover ~ .card {
   position: relative;
-  left: 10px;
   transition: 0.4s ease-out;
 }
 
-.weight{
-    display: none;
-}
-#deck{
-    display: inline;
-
-}
-.container{
-    position: absolute;
-    height: 300px;
-    width: 600px;
-    top: 60px;
-    left: calc(50% - 150px);
-    display: flex;
-}
 .game-body{
     width: 700px;
     height: 700px;
     background-color: green;
     position: relative;
     right: 200px;
-    bottom: 100px;
+    bottom: 350px;
     border: 5px solid black;
     border-radius: 2em;
-    margin-top: 1em;
     box-shadow: -.5em 0 1em grey;
+}
+header{
+    z-index: 2;
+    position: relative;
+    top: 220px;
+    font-weight: bold;
+    font-size: x-large;
 }
 .game-options{
     position: relative;
-    top: 550px;
+    top: 640px;
 }
 .btn{
     width: 100px;

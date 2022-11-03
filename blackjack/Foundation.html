@@ -6,33 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css" type="text/css">
-    <script src="Scripts.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="game">
+    <header>BlackJack</header>
+    <h3 class="dealerTitle">Dealers Hand</h3>
+    <h3 class="playersTitle">Your Hand</h3>
         <div class="game">
-            <div class="dealersHand">
-                <h3>Dealers Hand</h3>
-            </div>
-                <div id="hiddenCard" class="cardBack">
-                    <h2 class="cardValue">Ace</h2>
-                    <h2 class="cardSymbol">&#9824;</h2>
-                </div> 
-            <div class="playersHand">
-                <h3>Your Hand</h3>
-                <div id="hand">
-
+                <div class="dealersHand">
+                    <div id='dealers-Hand'>
+                        <div id="hiddenCard" class="cardBack">
+                            <h2 id="cardValue">Ace</h2>
+                            <h2 id="cardSuit">&#9824;</h2>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="playersHand">
+                    <div id="playersHand"></div>
+                </div>
             <div id="deck"></div>
                 <div class="game-body">
-                    <h1>Blackjack</h1>
                     <div class="game-options">
                         <input type="button" class="btn" value="hit me" onclick="hitMe()">
                         <input type="button" class="btn" value="stay" onclick="stay()">
                     </div>
                 </div>
        </div>
-    </div>
 </body>
 </html>

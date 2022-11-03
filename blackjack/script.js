@@ -6,7 +6,7 @@ let cardValue = ''
 let cardWeight = ''
 let card = ''
 
-    //create a deck of 52 card objects each contained in an array that have key and value pairs
+    //create a deck of 52 card divs each contained in an array that have key and value pairs
 function createDeck(){
     for(let i = 0; i < suits.length; i++){
         for(let u = 0; u < rank.length; u++){
@@ -46,9 +46,10 @@ function createDeck(){
     return deck
     
 }
+    //make a refactor function for creating cards 
 function createH2(placeholder,name,text){
     placeholder = document.createElement('h2')
-    placeholder.classList.add(name)
+    placeholder.setAttribute("id",name)
     placeholder.innerHTML = text
     card.append(placeholder)
 }
@@ -63,12 +64,21 @@ function shuffle(){
        }
        return deck
 }
+
 function getValue(card){
-let data = document.querySelector('weight')
-
+data = card.childNodes[0].innerHTML
+return parseInt(data)
 } 
+function checkAce(card){
+    if(card.childNodes[1].innerHTML === 'A'){
+        return 1;
+    } else{
+        return 0;
+    }
+}
+    //create the player's and the dealer's score counters 
+let data = 0;
 
-    //create the player and the dealer
 let dealerAceCount = 0;
 let yourAceCount = 0;
 let hiddenCard = 0;
@@ -80,15 +90,21 @@ let yourSum = 0;
 function startBlackJack(){
     createDeck()
     shuffle(deck)
-    getValue()
-    // createPlayers()
 
-    for(let i = 0; i < 5; i++){
+    for(let i = 0; i < 1; i++){
     hiddenCard = deck.pop();
     dealerSum += getValue(hiddenCard)
-    console.log(hiddenCard)
+    dealerAceCount += checkAce(hiddenCard)
+    dealersHand.append(hiddenCard)
+         while(dealerSum < 17){
+             let dealersHand = document.getElementById('dealers-Hand')
+             let dealCard = deck.pop()
+             dealerSum += getValue(dealCard)
+             dealerAceCount += checkAce(dealCard)
+             dealersHand.append(dealCard)
+        }
     }
-    console.log(deck)
+   
 }
 
 startBlackJack()
