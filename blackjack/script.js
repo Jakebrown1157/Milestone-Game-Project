@@ -76,21 +76,35 @@ function checkAce(card){
         return 0;
     }
 }
+function hit(){
+    if(!canHit){
+        return;
+    }
+    let playersHand = document.getElementById('players-Hand')
+    newCard = deck.pop()
+    playerSum += getValue(newCard)
+    playerAceCount += checkAce(newCard)
+    playersHand.append(newCard)
+    
+    if (reduceAce(yourSum,yourAceCount) > 21){
+        canHit = false;
+    }
+}
     //create the player's and the dealer's score counters 
 let data = 0;
 
 let dealerAceCount = 0;
-let yourAceCount = 0;
+let playerAceCount = 0;
 let hiddenCard = 0;
-let canHIt = true;
+let canHit = true;
 
 let dealerSum = 0;
-let yourSum = 0;
+let playerSum = 0;
 
 function startBlackJack(){
     createDeck()
     shuffle(deck)
-
+    
     for(let i = 0; i < 1; i++){
     let  Hidden = document.getElementById('Hidden')
     hiddenCard = deck.pop();
@@ -100,12 +114,20 @@ function startBlackJack(){
    
          while(dealerSum < 17){
              let dealersHand = document.getElementById('dealers-Hand')
-             let dealCard = deck.pop()
-             dealerSum += getValue(dealCard)
-             dealerAceCount += checkAce(dealCard)
-             dealersHand.append(dealCard)
+             newCard = deck.pop()
+             dealerSum += getValue(newCard)
+             dealerAceCount += checkAce(newCard)
+             dealersHand.append(newCard)
         }
     }
+    for(let i = 0; i < 2; i++){
+        let playersHand = document.getElementById('players-Hand')
+        newCard = deck.pop()
+        playerSum += getValue(newCard)
+        playerAceCount += checkAce(newCard)
+        playersHand.append(newCard)
+    }
+    document.getElementById('Hit').addEventListener('click',hit);
 }
 
 startBlackJack()
