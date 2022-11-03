@@ -7,13 +7,13 @@ The Application allows you to play a simple game of blackjack aginsed an Ai oppo
 In order for this to work it first starts by making a deck of 52 randomly generated cards. 
 
 Each card looks like this 
-<!-- 
+
     <div class="card">
     <h2 id="Weight">11</h2>
     <h2 id="cardValue">A</h2>
     <h2 id="cardSuit">♠</h2>
     </div>
--->
+
 These cards are made 
 Through some Dom manipulation and other co-processes like the card Suit if statements 
 and a little css with borders and position placements 
@@ -29,21 +29,21 @@ an almost identical process happens with your hand
 The only exception is that your hand will auto populate 2 cards everytime, while the dealers hand will continue to fill until his total is over 17 
 
 Example code: (lines 153 - 159)
-<!--
-while(dealerSum < 17){
-    let dealersHand = document.getElementById('dealers-Hand')
-    newCard = deck.pop()
-    dealerSum += getValue(newCard)
-    dealerAceCount += checkAce(newCard)
-    dealersHand.append(newCard)
-} 
--->
+
+    while(dealerSum < 17){
+        let dealersHand = document.getElementById('dealers-Hand')
+        newCard = deck.pop()
+        dealerSum += getValue(newCard)
+        dealerAceCount += checkAce(newCard)
+        dealersHand.append(newCard)
+    } 
+
 In order to get the actual values of any card on the table the program runs getValue() (lines 67 - 70). A function designed to look for a cards "Weight" Id and find the value. Further allowing high cards to be counted correctly.
 
 One big issue with the card weight system is it only allows Aces to count as 11 in order to correct this 
 after it uses getValue() it proceeds to checkAce() (lines 71 - 77) and reduceAce() (lines 79 - 85)
 
-<!-- 
+
 function checkAce(card){
     if(card.childNodes[1].innerHTML === 'A'){
         return 1;
@@ -58,7 +58,7 @@ function reduceAce(playerSum, playerAceCount){
     }
     return playerSum;
 } 
--->
+
 Finally it checks the players hand total aginsed the dealers hand total and deals with the different win conditions 
 
 *needed features* 
