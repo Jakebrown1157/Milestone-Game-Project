@@ -41,6 +41,8 @@ body{
 #Weight{
     display: none;
 }
+
+
 .cardBack{
     --width: 5em;
     --height: calc(var(--width) * 1.4);
@@ -55,6 +57,7 @@ body{
     transition: 0.4s ease-out;
 
     position: relative;
+    Right: 20px;
     z-index: 1;
     margin: 0.2em;
     display: inline;
@@ -78,6 +81,9 @@ body{
     margin: 0.2em;
     display: inline;
     float: left;
+}
+#Hidden{
+    display: none;
 }
 html{
     height: 10px;

@@ -92,10 +92,12 @@ function startBlackJack(){
     shuffle(deck)
 
     for(let i = 0; i < 1; i++){
+    let  Hidden = document.getElementById('Hidden')
     hiddenCard = deck.pop();
     dealerSum += getValue(hiddenCard)
     dealerAceCount += checkAce(hiddenCard)
-    dealersHand.append(hiddenCard)
+    Hidden.append(hiddenCard)
+   
          while(dealerSum < 17){
              let dealersHand = document.getElementById('dealers-Hand')
              let dealCard = deck.pop()
@@ -104,7 +106,6 @@ function startBlackJack(){
              dealersHand.append(dealCard)
         }
     }
-   
 }
 
 startBlackJack()
