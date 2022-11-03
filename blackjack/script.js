@@ -64,7 +64,7 @@ function shuffle(){
        }
        return deck
 }
-
+// Grabs the Weight value of any card
 function getValue(card){
 data = card.childNodes[0].innerHTML
 return parseInt(data)
@@ -76,6 +76,15 @@ function checkAce(card){
         return 0;
     }
 }
+// This function allows a player to continue drawing because it redefines an Ace as a 1 
+function reduceAce(playerSum, playerAceCount){
+    while (playerSum > 21 && playerAceCount > 0) {
+        playerSum -= 10;
+        playerAceCount -= 1;
+    }
+    return playerSum;
+}
+// allows the hit button to work
 function hit(){
     if(!canHit){
         return;
@@ -85,12 +94,24 @@ function hit(){
     playerSum += getValue(newCard)
     playerAceCount += checkAce(newCard)
     playersHand.append(newCard)
-    
-    if (reduceAce(yourSum,yourAceCount) > 21){
+
+    if (reduceAce(playerSum,playerAceCount) > 21){
         canHit = false;
     }
 }
-    //create the player's and the dealer's score counters 
+function stay(){
+    dealerSum = reduceAce(dealerSum,dealerAceCount);
+    playerSum = reduceAce(playerSum,playerAceCount);
+
+    canHit = false;
+    let reveal = document.getElementById('Hidden')
+    reveal.style.display = 'inline';
+    let hide = document.getElementById('cardBack');
+    hide.style.display = 'none';
+
+    
+}
+
 let data = 0;
 
 let dealerAceCount = 0;
@@ -128,6 +149,7 @@ function startBlackJack(){
         playersHand.append(newCard)
     }
     document.getElementById('Hit').addEventListener('click',hit);
+    document.getElementById('Stay').addEventListener('click',stay);
 }
 
 startBlackJack()
