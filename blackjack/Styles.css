@@ -6,7 +6,7 @@ body{
     margin: auto;
     
 }
-.dealerTitle{
+#dealerTitle{
     position: relative;
     top:250px;
     z-index: 1;
@@ -22,7 +22,7 @@ body{
     width: 600px;
     height: 200px;
 }
-.playersTitle{
+#playersTitle{
     position: relative;
     top:475px;
     z-index: 1; 
@@ -38,11 +38,12 @@ body{
     width: 600px;
     height: 200px;
 }
+#results{
+    display: inline;
+}
 #Weight{
     display: none;
 }
-
-
 #cardBack{
     --width: 5em;
     --height: calc(var(--width) * 1.4);
@@ -57,7 +58,7 @@ body{
     transition: 0.4s ease-out;
 
     position: relative;
-    Right: 20px;
+    right: 5px;
     z-index: 1;
     margin: 0.2em;
     display: inline;
@@ -104,7 +105,7 @@ html{
     background-color: green;
     position: relative;
     right: 200px;
-    bottom: 350px;
+    bottom: 375px;
     border: 5px solid black;
     border-radius: 2em;
     box-shadow: -.5em 0 1em grey;
@@ -124,3 +125,4 @@ header{
     width: 100px;
     height: 50px;
 }
+

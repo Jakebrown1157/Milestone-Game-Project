@@ -108,8 +108,26 @@ function stay(){
     reveal.style.display = 'inline';
     let hide = document.getElementById('cardBack');
     hide.style.display = 'none';
-
-    
+    //win conditions and messages
+    let message = ''
+    if(playerSum > 21){
+        message = 'You Lose!'
+    } else if (dealerSum > 21){
+        message = 'You Win!'
+    } else if (playerSum == dealerSum){
+        message = "Tie!"
+    } else if (playerSum > dealerSum){
+        message = 'You Win!'
+    } else if (playerSum < dealerSum){
+        message = 'you lose!'
+    }
+    let playerTotal = document.getElementById('playersTitle')
+    playerTotal.innerHTML = ('Your Hand' + ':   ' + playerSum)
+    let dealerTotal = document.getElementById('dealerTitle')
+    dealerTotal.innerText = ('Dealers Hand' + ':    ' + dealerSum)
+    let results = document.getElementById('results')
+    results.style.display = 'inline';
+    results.innerHTML = message
 }
 
 let data = 0;
