@@ -44,20 +44,20 @@ One big issue with the card weight system is it only allows Aces to count as 11 
 after it uses getValue() it proceeds to checkAce() (lines 71 - 77) and reduceAce() (lines 79 - 85)
 
 
-function checkAce(card){
+    function checkAce(card){
     if(card.childNodes[1].innerHTML === 'A'){
-        return 1;
+    return 1;
     } else{
         return 0;
     }
-}
-function reduceAce(playerSum, playerAceCount){
+    }
+    function reduceAce(playerSum, playerAceCount){
     while (playerSum > 21 && playerAceCount > 0) {
-        playerSum -= 10;
-        playerAceCount -= 1;
+    playerSum -= 10;
+    playerAceCount -= 1;
     }
     return playerSum;
-} 
+    } 
 
 Finally it checks the players hand total aginsed the dealers hand total and deals with the different win conditions 
 
