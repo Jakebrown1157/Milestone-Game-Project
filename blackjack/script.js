@@ -1,25 +1,24 @@
 let suits = ['spades','hearts','diamonds','clubs']
 let rank = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
 let deck = []
-let deckElement = document.getElementById('deck')
 let cardValue = ''
 let cardWeight = ''
 let card = ''
 
     //create a deck of 52 card divs each contained in an array that have key and value pairs
-function createDeck(){
-    for(let i = 0; i < suits.length; i++){
-        for(let u = 0; u < rank.length; u++){
-            cardValue = rank[u]
-            let weight = parseInt(cardValue);
-            if (cardValue === "T" || cardValue === "J" || cardValue === "Q" || cardValue === "K"){
-                weight = 10;
-            }else if (cardValue == "A"){
-                weight = 11;
-            }
-            
-            card = document.createElement('div')
-            card.classList.add('card')
+    function createDeck(){
+        for(let i = 0; i < suits.length; i++){
+            for(let u = 0; u < rank.length; u++){
+                cardValue = rank[u]
+                let weight = parseInt(cardValue);
+                if (cardValue === "T" || cardValue === "J" || cardValue === "Q" || cardValue === "K"){
+                    weight = 10;
+                }else if (cardValue == "A"){
+                    weight = 11;
+                }
+                
+                card = document.createElement('div')
+                card.classList.add('card')
             const ID1 = (suits[i])
             addCardElements(ID1)
 
@@ -65,9 +64,9 @@ function shuffle(){
 }
 // Grabs the Weight value of any card
 function getValue(card){
-data = card.childNodes[0].innerHTML
-return parseInt(data)
-} 
+    data = card.childNodes[0].innerHTML
+    return parseInt(data)
+    } 
 function checkAce(card){
     if(card.childNodes[1].innerHTML === 'A'){
         return 1;
@@ -86,6 +85,8 @@ function reduceAce(playerSum, playerAceCount){
 // allows the hit button to work
 function hit(){
     if(!canHit){
+        let hitMessage = document.getElementById('hitMessage')
+        hitMessage.innerHTML = 'Your over 21... Sorry'
         return;
     }
     let playersHand = document.getElementById('players-Hand')
@@ -94,14 +95,14 @@ function hit(){
     playerAceCount += checkAce(newCard)
     playersHand.append(newCard)
 
-    if (reduceAce(playerSum,playerAceCount) > 21){
+    if (reduceAce(playerSum,playerAceCount) >= 21){
         canHit = false;
     }
+    deckTotal(deck)
+    playerTotal()
 }
 function stay(){
     dealerSum = reduceAce(dealerSum,dealerAceCount);
-    playerSum = reduceAce(playerSum,playerAceCount);
-
     canHit = false;
     let reveal = document.getElementById('Hidden')
     reveal.style.display = 'inline';
@@ -120,13 +121,21 @@ function stay(){
     } else if (playerSum < dealerSum){
         message = 'you lose!'
     }
-    let playerTotal = document.getElementById('playersTitle')
-    playerTotal.innerHTML = ('Your Hand' + ':   ' + playerSum)
     let dealerTotal = document.getElementById('dealerTitle')
     dealerTotal.innerText = ('Dealers Hand' + ':    ' + dealerSum)
     let results = document.getElementById('results')
     results.style.display = 'inline';
     results.innerHTML = message
+    playerTotal()
+}
+function deckTotal(deck){
+ let deckNumber = document.getElementById('deckValue')
+ deckNumber.innerHTML = deck.length
+}
+function playerTotal(){
+    playerSum = reduceAce(playerSum, playerAceCount)
+    let playerTotal = document.getElementById('playersTitle')
+    playerTotal.innerHTML = ('Your Hand' + ':   ' + playerSum) 
 }
 
 let data = 0;
@@ -139,9 +148,11 @@ let canHit = true;
 let dealerSum = 0;
 let playerSum = 0;
 
+
 function startBlackJack(){
     createDeck()
     shuffle(deck)
+    
     //Dealers hand
     for(let i = 0; i < 1; i++){
     let  Hidden = document.getElementById('Hidden')
@@ -149,6 +160,7 @@ function startBlackJack(){
     dealerSum += getValue(hiddenCard)
     dealerAceCount += checkAce(hiddenCard)
     Hidden.append(hiddenCard)
+    
    
          while(dealerSum < 17){
              let dealersHand = document.getElementById('dealers-Hand')
@@ -165,9 +177,13 @@ function startBlackJack(){
         playerSum += getValue(newCard)
         playerAceCount += checkAce(newCard)
         playersHand.append(newCard)
+        playerTotal()
     }
+    deckTotal(deck)
     document.getElementById('Hit').addEventListener('click',hit);
     document.getElementById('Stay').addEventListener('click',stay);
+    
 }
 
 startBlackJack()
+playerTotal()
