@@ -97,12 +97,13 @@ function hit(){
 
     if (reduceAce(playerSum,playerAceCount) >= 21){
         canHit = false;
+        stay()
     }
     deckTotal(deck)
     playerTotal()
 }
 function stay(){
-    dealerSum = reduceAce(dealerSum,dealerAceCount);
+    
     canHit = false;
     let reveal = document.getElementById('Hidden')
     reveal.style.display = 'inline';
@@ -122,6 +123,7 @@ function stay(){
         message = 'you lose!'
     }
     let dealerTotal = document.getElementById('dealerTitle')
+    dealerSum = reduceAce(dealerSum,dealerAceCount);
     dealerTotal.innerText = ('Dealers Hand' + ':    ' + dealerSum)
     let results = document.getElementById('results')
     results.style.display = 'inline';
